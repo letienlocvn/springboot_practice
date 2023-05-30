@@ -1,7 +1,12 @@
 package loclt.com.basic_springboot.core_tech.DI;
 
+import loclt.com.basic_springboot.core_tech.ioc.Injector;
+
+import javax.management.InstanceNotFoundException;
+import java.io.IOException;
+
 public class DemoDependencyInjection {
-    public static void main(String[] args) {
+    public static void main(String[] args)  throws InstanceNotFoundException, NoSuchMethodException {
         /**
          * Old code, not understand problem.
          *
@@ -24,5 +29,9 @@ public class DemoDependencyInjection {
         System.out.println(neymar1.playFootball());
         System.out.println(neymar2.goWithMyGirlFriend());
 
+        //IoC Demo
+//        Shoes puma = (Shoes) Injector.getInstance("shoesService");
+//        FootballPlayer locMessi = new FootballPlayer("Messi", puma);
+//        System.out.println(locMessi.goWithMyGirlFriend());
     }
 }
