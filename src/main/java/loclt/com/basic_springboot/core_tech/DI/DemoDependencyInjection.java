@@ -29,7 +29,7 @@ public class DemoDependencyInjection {
         System.out.println(neymar1.playFootball());
         System.out.println(neymar2.goWithMyGirlFriend());
 
-        //IoC Demo
+        //IoC Demo - Failed
 //        Shoes puma = (Shoes) Injector.getInstance("shoesService");
 //        FootballPlayer locMessi = new FootballPlayer("Messi", puma);
 //        System.out.println(locMessi.goWithMyGirlFriend());
