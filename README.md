@@ -66,7 +66,7 @@ Tương tự, vậy làm gì để chúng ta có thể cấu hình Bean._
 
 #### 1. Java-Based Configuration
 - `@Bean`, `@Configuration`
-  - `@Bean`: Được áp dụng trên một phương thức và đánh dấu nó sẽ được quản lí bởi Spring Container.
+  - `@Bean`: Được áp dụng trên một method và đánh dấu nó sẽ được quản lí bởi Spring Container.
   - `@Configuration`: Chứa các cấu hình Spring Bean. Cho biết đây là nơi sẽ định nghĩa các Bean.
 #### 2. Annotation Configuration
 - _Thay vì việc phải dùng một file `compareAnnotationWithXMLConfig.xml` để định nghĩa dài dòng một **component** (sẽ nhắc trong các phần sau), thì chúng ta chỉ cần một `@Component` để đánh dấu là xong. Việc này cho thấy được sự **tiện lợi** khi sử dụng annotation_
@@ -129,7 +129,49 @@ Trong phần này, mình được gợi ý nên tập trung vào phần singleto
 
 Bài viết tham khảo tại [Guru](https://refactoring.guru/design-patterns/singleton), [Viblo](https://viblo.asia/p/hoc-singleton-pattern-trong-5-phut-4P856goOKY3)
 
+> **_Singleton_** is a creational design pattern that lets you ensure (đảm bảo) that a class has only one instance, while providing a global access point to this instance.
 
+Vậy câu hỏi được đặt ra là tại sao chúng ta chỉ cần **một instance cho một class** và phải cung cấp cho nó một **global access point** ?
+
+Mình thấy ví dụ này khá hợp lí. Trên điện thoại, khi bật một bài nhạc, tại 1 thời điểm bạn chỉ cần nghe 1 bài duy nhất. Nếu có bật thêm nững cái khác, thì cũng chỉ có 1 trình phát nhạc được sử dụng mà thôi.
+
+Vậy chúng ta sẽ **implement** như thế nào ? 
+
+1. Make the default constructor private -> Tránh các truy cập từ bên ngoài
+2. Create a static creation method -> Tham chiếu tới 1 instance của class đó
+
+_Chúng ta cũng đã hiểu được sơ qua về khái niệm singleton. Nhưng những điều giải thích vừa rồi dành cho một class cụ thể, nó thuộc về ClassLoader nhiều hơn._
+_Nhưng trong phạm vi của Spring Container. ta sẽ có cách triển khai ở `icon_container.beans.singleton`_
+
+_Qua ví dụ vừa rồi, ta học được cách triển khai một singleton được sử dụng trong Spring Bean._ 
+
+_Tiếp theo, mình mới thắc mắc là làm sao Spring Container có thể biết nó là một Bean? 
+Có phải là thông qua việc sử dụng annotation `@Bean` hay `@Configuaration` hay không?_
+
+_Khi xem kĩ lại các định nghĩa của `@Bean` và `@Configuaration` thì mình thấy_
+- _Trong `@Configuaration` có một annotation một `@Component`_
+
+Tiếp theo chúng sẽ xem `@Component` là gì?
+
+##### 1.3 `@Component`
+Bài viết tham khảo tại [Spring Document](https://docs.spring.io/spring-framework/reference/core/beans/classpath-scanning.html#beans-stereotype-annotations)
+
+_Trước khi đọc, mình có scan qua một vài chỗ, và có một vài thuật ngữ mình còn thắc mắc_
+_Generic Stereotype (Các khuôn mẫu chung): Nó là một thuật ngữ được sử dụng để đề cập đến việc sử dụng stereotype (nhãn hiệu) có tính chất chung (generic) để đánh dấu các thành phần trong ứng dụng._
+_Tức là nó muốn nói đến một cái gì đó chung chung hơn, hơn là một cái cụ thể (nghe giống triết học)._
+
+_Hoặc chúng ta cũng có thể xem thông qua bên trong annotation có gì_
+
+
+_Dưới đây là ví dụ trong Spring_
+> `@Component` is a generic stereotype for any Spring-managed component. `@Repository`, `@Service`, and `@Controller` are specializations of `@Component` for more specific use cases (in the persistence, service, and presentation layers, respectively)
+
+VD: `@Service` cụ thể hơn là một `@Component` trong service layer.
+
+**Nhiệm vụ** của `@Component`
+> Component scan sẽ tìm toàn bộ class ở package cùng cấp hoặc các package thấp hơn
+
+Oke, vậy là cơ bản chúng ta nắm được cơ bản những phần lí thuyết để bắt đầu Spring Boot.
 
 #### File properties.
 lưu trữ dữ liệu cấu hình dự án hoặc các thông số cài đặt. Gồm các cặp key/value
