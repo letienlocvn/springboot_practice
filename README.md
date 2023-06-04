@@ -173,6 +173,48 @@ VD: `@Service` cụ thể hơn là một `@Component` trong service layer.
 
 Oke, vậy là cơ bản chúng ta nắm được cơ bản những phần lí thuyết để bắt đầu Spring Boot.
 
+##### Cấu trúc một dự án Spring boot 
+- ![img_1.png](img_1.png)
+- ![img_2.png](img_2.png)
+
+_Lần đầu sử dụng Springboot, (lúc đó chưa thật sự hiểu về nó) mình cũng loay hoay tìm cấu trúc của một dự án để các thành viên trong nhóm có thể đọc và dễ phát triển, vậy đâu là cấu trúc tốt nhất. Nên mình xem việc này là rất cần thiết cho một dự án nào đó_
+_Với kinh nghiệm non kém của mình tại thời điểm hiện tại, câu trả lời là "tùy", nó phụ thuộc vào độ lớn của dự án mà chúng ta đang làm là gì và mục đích mà bạn hướng tới. Lúc trước, thầy mình dạy theo cấu trúc như hình số 1. Cá nhân mình thấy, cấu trúc này còn có thể scale ra được nữa và cho biết dự án của chúng ta gồm những thực thể nào, từ đó việc truy vấn hay sử dụng các service cũng dễ hơn_
+_Đối với hình số 2, việc chia cấu trúc như thế mình cảm nhận được kiến trúc và luồng đi (data) của dự án đó có những gì hay đang làm gì_
+
+_Cá nhân mình sẽ chọn theo hướng số 2, để nắm bắt được kiến trúc cũng như luồng đi cụ thể của nó trong quá trình development_
+
+Bài viết tham khảo:
+- [IBM - three-tier](https://www.ibm.com/topics/three-tier-architecture)
+- [Viblo - Luồng đi trong spring boot](https://viblo.asia/p/luong-di-trong-spring-boot-ORNZqdELK0n)
+- [Viblo - Cấu trúc dự án](https://viblo.asia/p/cau-truc-du-an-spring-boot-the-nao-cho-chuan-ORNZqdwbK0n)
+- [javatpoint - Spring Boot Architecture](https://www.javatpoint.com/spring-boot-architecture)
+
+###### Three-tier architecture là gì
+Gồm 3 lớp:
+1. Presentation tier (Detail: UI, GUI, HTML, CSS and JavaScript)
+2. Application tier (Logic tier,  using business logic, a specific set of business rules)
+3. Data tier (where the information processed by the application is stored and managed)
+
+_Lưu ý: Nên phân biệt rõ giữa `tier` và `layer` là gì, vì điều này mà nhiều lúc mình cũng bị bối rối trước nó_
+
+> "layer" đề cập đến một phân chia chức năng của phần mềm, trong khi "tier" đề cập đến một phân chia chức năng của phần mềm chạy trên cơ sở hạ tầng riêng biệt so với các phân chia khác
+
+Ví dụ, ứng dụng Contacts trên điện thoại của bạn là một ứng dụng ba lớp, nhưng chỉ chạy trên một tier duy nhất, vì tất cả ba lớp đều chạy trên điện thoại của bạn.
+
+_Vậy nên gọi như thế nào? Ở mức độ hiện tại mình sẽ gọi nó là một layer_
+
+Trong Spring boot được chia thành **4 layer** chính: 
+1. **Presentation Layer**: Handle requests, translates the JSON parameter
+2. **Business Layer**: handles all the business logic (Nơi xây dựng logic, giải quyết vấn đề của ứng dụng)
+3. **Persistence Layer**: Xử lý các hoạt động liên quan đến lưu trữ và truy xuất dữ liệu
+4. **Database Layer**: CRUD operations are performed.
+
+Xem luồng đi Springboot [tại đây](https://viblo.asia/p/luong-di-trong-spring-boot-ORNZqdELK0n)
+
+_Oke, giờ đến phần thực hành. Mình nghĩ nhiêu đây là quá đủ lý thuyết cần nắm để bắt đầu rồi.
+Thực hành sẽ tốt hơn là việc đọc lý thuyết_
+ 
+
 #### File properties.
 lưu trữ dữ liệu cấu hình dự án hoặc các thông số cài đặt. Gồm các cặp key/value
 
