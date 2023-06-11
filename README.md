@@ -6,6 +6,8 @@ Còn lại, nó đến từ việc luyện tập và thu thập dữ liệu củ
 Mình làm những điều trên để sau này mình có thể ôn lại._
 
 _Khi có một thông tin gì đó mới, mình sẽ áp dụng cấu trúc: What? Why? How? Cho 1 vấn đề_
+
+_Bài viết dưới đây chưa được sắp xếp theo một lộ trình cụ thể, mình chỉ cố gắng đi sát những **vấn đề cơ bản** cần phải giải quyết khi bắt đầu với 1 project Spring boot_
 ## Core concept
 
 #### Hạn chế của DI
@@ -213,9 +215,68 @@ Xem luồng đi Springboot [tại đây](https://viblo.asia/p/luong-di-trong-spr
 
 _Oke, giờ đến phần thực hành. Mình nghĩ nhiêu đây là quá đủ lý thuyết cần nắm để bắt đầu rồi.
 Thực hành sẽ tốt hơn là việc đọc lý thuyết_
- 
 
-#### File properties.
+
+Vì mình đang phải trong quá trình tìm việc, làm một cái gì đó đơn giản, nhanh chóng. Chủ yếu phục vụ việc củng cố kiến thức và thực hành. 
+Nên mình sẽ bắt đầu với một trang web portfolio.
+
+Mọi thông tin mới sẽ được ghi vào đây. 
+
+Ngày 3
+
+Bắt đầu với các HTTPS methods và tương tác với database
+
+- GET, POST, PUT, DELETE.
+- Các annotation @RestController, @RequestMapping(), @Autowired, @Service
+
+Để có thể sử dụng được các method Service, chúng ta cần phải đánh dấu nó là `@Service`
+
+@Autowired
+>It allows Spring to resolve and inject collaborating beans into our bean.
+
+_Mục đích: thay vì chúng ta sử dụng DI để khởi tạo instance một cách thủ công.
+Thì Autowired sẽ giúp chúng ta điều này. Spring sẽ quét qua các bean được quản lý và tìm bean phù hợp với kiểu và tên của dependency để tiêm vào._
+
+##### Trước khi bắt đầu với các service - Cần tìm hiểu những gì
+Mình tham khảo hướng dẫn: [tại đây](https://amigoscode.com/p/spring-data-jpa) - _Nhưng mình không học trên đây và đi collect từ nhiều nguồn khác nhau_
+- Spring Data JPA
+- Connect to a real database
+- How to map classes to tables
+- Hibernate Entity Life Cycle
+- Queries
+- Paging and Sorting
+- 1 to 1 Relationships
+- 1 to Many Relationships
+- Many-to-many relationships
+- Transactions
+
+#### Spring Data JPA là gì
+Các bài viết tham khảo tại:
+- [Gpcoder](https://gpcoder.com/6282-tong-quan-ve-jpa-java-persistence-api/)
+- [TechMaster](https://techmaster.vn/posts/37162/jpa-la-gi-gioi-thieu-ve-java-persistence)
+- [Document](https://docs.oracle.com/javaee/6/tutorial/doc/bnbpz.html)
+
+###### Spring Data
+Spring Data là một module của Spring framework.
+
+###### JPA (Jakarta Persistence API)
+- Cung cấp cơ chế giúp đối tượng còn tồn tại sau khi chương trình đó kết thúc
+- Hibernate là một công cụ để triển khai JPA 
+- JPA không phải là một framework. Nó là một đặc tả để các công cụ khác triển khai
+
+Các thành phần quan trọng có trong JPA
+- Entity 
+- EntityManager
+- EntityManagerFactory
+- Persistence
+
+Cách sử dụng - đọc thêm thông tin [tại đây](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.core-concepts)
+
+Đầu tiên, chúng ta cần phải kết nối tới database và chúng ta sẽ định nghĩa nó ở file `application.properties`
+
+###### File properties.
 lưu trữ dữ liệu cấu hình dự án hoặc các thông số cài đặt. Gồm các cặp key/value
+
+Cách triển khai [tại đây](https://spring.io/guides/gs/accessing-data-mysql/).
 
 
